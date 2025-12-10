@@ -165,7 +165,8 @@ namespace Domain.Services
                 throw new InvalidOperationException("Este torneo es individual. Solo se pueden inscribir jugadores, no equipos.");
 
             //Validar cantidad de jugadores según tipo de torneo
-            int cantidadJugadores = equipo.Usuarios.Count;
+            //int cantidadJugadores = equipo.Usuarios.Count;
+            int cantidadJugadores = equipo.Usuarios.Count + (equipo.Lider != null ? 1 : 0);
             bool cantidadValida = tipoTorneo switch
             {
                 var t when t.Contains("2v2") => cantidadJugadores == 2,
